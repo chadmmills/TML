@@ -1,0 +1,24 @@
+class Modal
+  constructor: (el) ->
+    @modal = el
+    console.log el
+
+  show: ->
+    @modal.addClass("show")
+    @
+
+  modalBody: ->
+    @modal.find('.modal-body')
+
+  showWithHTML: (html) ->
+    @modalBody().html(html)
+
+  waiting: ->
+    @modalBody().html """
+      <%= image_tag('loader.gif', class: 'ma' ) %>
+    """
+
+
+$(document).on "turbolinks:load", ->
+  window.modal = new Modal( $("[data-behavior='modal']") )
+

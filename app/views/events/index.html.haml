@@ -1,0 +1,14 @@
+= link_to "New Event", new_event_path
+
+%h2 Upcoming Events
+
+= render(events) || "No upcoming events"
+
+%h2 Previous Events
+
+= render(previous_events) || "No previous events"
+
+%h2 Floating Events
+
+= render floating_events
+

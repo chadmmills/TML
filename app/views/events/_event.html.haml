@@ -1,0 +1,4 @@
+%div[event]
+  .event-date= event.event_date_formatted
+  .event-title
+    = link_to event.event_title, event, remote: true, data: { show_modal: "yes", behavior: "show-event" }
