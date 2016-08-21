@@ -3,7 +3,7 @@ $(document).on "turbolinks:load", ->
     window.modal.show().waiting()
 
   $("[data-behavior='show-event']").on "ajax:send", (data, status) ->
-    console.log "SEOMTHING"
+    console.info "Sending request for event..."
 
   $("[data-behavior='show-event']").on "ajax:error", (data, status, error) ->
     console.log "ERROR"

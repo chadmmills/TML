@@ -4,15 +4,25 @@
     <title>TML2</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= link_to root_path, class: "absolute top-0 right-0 p1 home__icon" do %>
+      <i class="fa fa-home" aria-hidden="true"></i>
+    <% end %>
+    <div class="modal-overlay flex items-center justify-center" data-behavior="modal-close">
+      <div class="modal mx-auto" data-behavior='modal'>
+        <div class="modal__close flex items-center justify-center" data-behavior="modal-close">
+          <span>&times</span>
+        </div>
+        <div class="modal__body"></div>
+      </div>
+    </div>
+
     <%= yield %>
 
-    <div class="modal" data-behavior='modal'>
-      <div class="modal-body"></div>
-    </div>
   </body>
 </html>

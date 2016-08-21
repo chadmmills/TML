@@ -1,24 +1,34 @@
 class Modal
   constructor: (el) ->
     @modal = el
+    @modalOverlay = el.parent(".modal-overlay")
     console.log el
 
   show: ->
-    @modal.addClass("show")
+    @modalOverlay.toggleClass("show")
     @
 
+  close: ->
+    @modalOverlay.toggleClass("show")
+
   modalBody: ->
-    @modal.find('.modal-body')
+    @modal.find('.modal__body')
 
   showWithHTML: (html) ->
     @modalBody().html(html)
 
   waiting: ->
     @modalBody().html """
-      <%= image_tag('loader.gif', class: 'ma' ) %>
+      <div class="modal__spinner--overlay flex items-center justify-center">
+        <%= image_tag('loader.gif', class: 'modal__spinner ma' ) %>
+      </div>
     """
 
 
 $(document).on "turbolinks:load", ->
   window.modal = new Modal( $("[data-behavior='modal']") )
+
+  $("[data-behavior~='modal-close']").on "click", (e) ->
+    e.stopPropagation()
+    window.modal.close()
 

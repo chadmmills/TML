@@ -14,8 +14,23 @@
  *
  */
 
-.modal {
-  min-height: 200px;
-  min-width: 400px;
-  border: 1px solid black;
+@import "modal";
+@import "utilities";
+
+html, body {
+  font-family: "helvetica", "sans-serif";
+  font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+a, a:visited {
+  color: #41AFB3;
+}
+
+
+.home__icon {
+  font-size: 2em;
 }

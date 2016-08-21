@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
     respond_to do |f|
+      f.html { render locals: { event: event }}
       f.js { render locals: { event: event }}
     end
   end

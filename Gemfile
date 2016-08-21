@@ -11,6 +11,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'haml'
+gem 'awesome_print', '~> 1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri

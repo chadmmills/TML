@@ -1,0 +1,5 @@
+.h1.center New Contacts
+
+= form_for ContactUpload.new do |f|
+  = f.file_field :csv_upload_file
+  = f.button "Upload"
