@@ -10,6 +10,6 @@ feature "Creating an event" do
     expect(page).to have_css "div", text: "Jack Birthday"
 
     click_link "Jack Birthday"
-    click_link "New Invitation List"
+    click_link "New"
   end
 end

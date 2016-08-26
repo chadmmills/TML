@@ -14,20 +14,25 @@
  *
  */
 
+@import "colors";
 @import "modal";
+@import "basscss_extras";
 @import "utilities";
+@import "contacts";
 
 html, body {
   font-family: "helvetica", "sans-serif";
   font-weight: 100;
+  color: #75757C;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 100;
+  color: #212121;
 }
 
 a, a:visited {
-  color: #41AFB3;
+  color: $primary;
 }
 
 

@@ -1,9 +1,12 @@
 class ContactUploadsController < ApplicationController
   def create
     if contact_upload.upload
-      redirect_to "contacts/new"
+      redirect_to contacts_path, success: "Contacts uploaded successfully"
     else
-      render "contacts/new"
+      render "contacts/index", locals: {
+        contacts: Contact.all,
+        last_upload: Upload.most_recent,
+      }
     end
   end
 

@@ -1,3 +1,7 @@
 .h1.center= event.event_title
-.new-things
-  = link_to "New Invitation List", new_event_invitation_list_path(event)
+.invitation-list
+  .h3.inline Invitation List
+  = link_to "New", new_event_invitation_list_path(event)
+  - event.invitation_lists.each do |list|
+    .invitation_list_link
+      = link_to list.title, list

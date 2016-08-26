@@ -1,0 +1,7 @@
+%div[contact]
+  .h1.center.mb1.contact__name= contact.name
+  %div{ id: "contact-map", class: "contact__map", data: { address: contact.full_address}  }
+
+:javascript
+  $(document).trigger("contact-map:load");
+

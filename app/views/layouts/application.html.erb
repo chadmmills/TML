@@ -7,13 +7,14 @@
     <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRGP2uU9fJu0mzwBBJQm--HCIbnCUOpBc" async defer></script>
   </head>
 
   <body>
     <%= link_to root_path, class: "absolute top-0 right-0 p1 home__icon" do %>
       <i class="fa fa-home" aria-hidden="true"></i>
     <% end %>
-    <div class="modal-overlay flex items-center justify-center" data-behavior="modal-close">
+    <div class="modal-overlay flex items-center justify-center" data-behavior="">
       <div class="modal mx-auto" data-behavior='modal'>
         <div class="modal__close flex items-center justify-center" data-behavior="modal-close">
           <span>&times</span>

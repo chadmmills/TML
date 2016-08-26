@@ -1,0 +1,34 @@
+.h1.center Contacts
+
+.flex
+  .existing-contacts.flex-auto
+    .h3.mb2 Existing Contacts
+    %table.table-light
+      %thead
+        %th Name
+        %th Address
+        %th City, State
+        %th Zip
+      %tbody
+        = render partial: "contacts/contact_table_row", collection: contacts, as: :contact
+  .new-contacts.pl2
+    .new-contacts__form
+      .h3.mb2 New Contacts
+      = form_for ContactUpload.new do |f|
+        .pb1
+          = f.file_field :csv_upload_file
+        .pb1
+          = f.button "Upload", class: "btn"
+    .new-contacts__recent-uploads.mt2
+      .h3.mb2 Recent Uploads
+      - if last_upload
+        = link_to "Undo Last Upload",
+          upload_path(last_upload),
+          method: :delete
+      .h5.mb1
+        %ul.list-reset
+          - recent_uploads.each do |upload|
+            %li.upload.flex.pr2.mb1{ data: { behavior: "show-included-contacts", contact_ids: upload.contact_ids.join(",") } }
+              .upload__date.flex-auto.flex.items-center= upload.uploaded_at
+              = link_to upload, class: "upload__undo", method: :delete do
+                %i.fa.fa-undo{ aria_hidden: "true"}

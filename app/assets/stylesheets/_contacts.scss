@@ -1,0 +1,21 @@
+.contact {
+  &.highlight {
+    background-color: darken($white, 5%);
+  }
+  &__map {
+    min-height: 100px;
+  }
+}
+
+.upload {
+  background-color: $white;
+  transition: background-color .2s ease-in-out;
+  &:hover {
+    background-color: darken($white, 2%);
+  }
+  &__undo {
+    padding: 5px;
+    background-color: $primary;
+    color: $white;
+  }
+}

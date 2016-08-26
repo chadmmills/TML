@@ -13,7 +13,7 @@ class InvitationListsController < ApplicationController
   def create
     respond_to do |format|
       if new_invitation_list.save
-        format.html { redirect_to [event, new_invitation_list] }
+        format.html { redirect_to new_invitation_list }
       else
         format.html do
           render :new, locals: {

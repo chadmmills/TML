@@ -6,7 +6,7 @@ feature "Creating an invitation list" do
 
     visit root_path
     click_link "John Doe Bday"
-    click_link "New Invitation List"
+    click_link "New"
     click_button "Create"
     expect(page).to have_content "Title can't be blank"
     fill_in "Title", with: "Bday Invite List"
