@@ -1,8 +1,8 @@
-.h1.center New Invitation List
+.h1.center New Mailing List
 .h4.center
   = link_to event.event_title, event
 
-= form_for [event, invitation_list] do |f|
+= form_for [event, mailing_list] do |f|
   .field
     = f.label :title
     = f.text_field :title

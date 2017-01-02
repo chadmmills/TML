@@ -1,0 +1,10 @@
+= form_for contact do |f|
+  .sm-col-6
+    = f.text_field :name, placeholder: "Enter Contact Name", class: "field col-12 block mb1"
+    = f.text_field :street_1, placeholder: "Street", class: "field col-12 block mb1"
+    = f.text_field :street_2, placeholder: "APT", class: "field col-12 block mb1"
+    = f.text_field :city, placeholder: "City", class: "field col-12 block mb1"
+    = f.text_field :state, placeholder: "State", class: "field col-12 block mb1"
+    = f.text_field :zipcode, placeholder: "Zipcode", class: "field col-12 block mb1"
+    = f.button "Save"
+

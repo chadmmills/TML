@@ -2,7 +2,6 @@ class Modal
   constructor: (el) ->
     @modal = el
     @modalOverlay = el.parent(".modal-overlay")
-    console.log el
 
   show: ->
     @modalOverlay.toggleClass("show")
@@ -25,10 +24,27 @@ class Modal
     """
 
 
-$(document).on "turbolinks:load", ->
-  window.modal = new Modal( $("[data-behavior='modal']") )
+contactModalObj =
+  el: "#contact-modal-container"
+  data:
+    showModal: false
+    isLoading: false
+    contact: {}
+  methods:
+    showContactWithId: (id) ->
+      self = @
+      self.showModal = true
+      self.isLoading = true
+      TMLAxios.get "/contacts/#{id}.json"
+      .then (response) ->
+        self.isLoading = false
+        self.contact = response.data.contact
+        new ContactMap(document.getElementById("contact-card__map"), response.data.contact.address).show()
 
-  $("[data-behavior~='modal-close']").on "click", (e) ->
-    e.stopPropagation()
-    window.modal.close()
 
+document.addEventListener "turbolinks:load", ->
+  window.TMLContactModal = new Vue(contactModalObj)
+
+window.addEventListener 'keyup', (evt) ->
+  if evt.keyCode is 27
+    TMLContactModal.showModal = false

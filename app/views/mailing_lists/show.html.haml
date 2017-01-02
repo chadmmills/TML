@@ -1,0 +1,24 @@
+.h1.center= mailing_list.title
+.h4.center
+  = link_to mailing_list.event_title, mailing_list.event
+
+.mailing-list__contacts
+  #mailing_list__contacts-list
+    .mailing-list__contacts-list-stats.center.pt2
+      {{ numberOfAssignedContacts }} contacts assigned to mailing list.
+    .mailing-list__filters
+      %a{ "href" => "#filter", "@click" => "toggleAddedFilter" } Show Added
+      %a{ "href" => "#", "@click.prevent" => "clearFilters" } Clear
+    .header.flex.max-width-3.mx-auto.p2
+      .flex-auto.bold Name
+      .mailing-list__contact-assignment.width-8.bold
+        Add to List?
+      .mailing-list__contact-action-complete.width-8.bold
+        Action Complete?
+
+    %ul.list-reset.max-width-3.mx-auto.my0
+      = render "mailing_list_contact_js_template"
+
+
+:javascript
+  window._contacts = #{mailing_list.contacts.to_json};

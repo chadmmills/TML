@@ -1,0 +1,59 @@
+<div id="contacts-vue-table">
+  <contact-table initial-contacts='<%= raw contacts.to_json(methods: [:address]) %>'>
+  </contact-table>
+</div>
+
+<script id="contacts-table-template" type="text/x-template">
+  <table class="table-light">
+    <thead>
+      <tr><th>Name</th>
+        <th>Address</th>
+        <th>City, State</th>
+        <th>Zip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <contact-table-row v-for="(contact, index) in contacts" v-bind:contact="contact"></contact-table-row>
+    </tbody>
+  </table>
+</script>
+
+<script id="contact-table-row" type="text/x-template">
+  <tr class='contact' id='contact_370'>
+    <td>
+      <a v-bind:href="contactUrl">{{ contact.name }}</a>
+    </td>
+    <td>{{contact.address}}</td>
+    <td>{{contact.city}}, {{contact.state}}</td>
+    <td>{{contact.zipcode}}</td>
+  </tr>
+</script>
+
+<script>
+  Vue.component('contact-table-row', {
+    template: "#contact-table-row",
+    props: ["contact"],
+    data: function(){
+      return {
+        contactUrl: "/contacts/" + this.contact.id,
+      }
+    }
+  });
+
+  Vue.component('contact-table', {
+    template: "#contacts-table-template",
+    props: ["initialContacts"],
+    data: function(){
+      return {
+        contactCount: 0,
+        contacts: JSON.parse(this.initialContacts),
+      }
+    }
+  });
+
+  new Vue({
+    el: "#contacts-vue-table",
+  });
+
+
+</script>

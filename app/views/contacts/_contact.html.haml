@@ -1,7 +1,20 @@
 %div[contact]
-  .h1.center.mb1.contact__name= contact.name
   %div{ id: "contact-map", class: "contact__map", data: { address: contact.full_address}  }
+  .h1.center.my2.contact__name= contact.name
 
-:javascript
-  $(document).trigger("contact-map:load");
+  .flex.flex-wrap
+    .mh-1.col-6.flex
+      .p1.flex.flex-auto
+        .bg-white.flex-auto.p1.border-mid
+          .h2 Edit Details
+          = render "form", contact: contact
+          .mt4
+            = button_to "Remove", contact, method: :delete
 
+    .mh-1.col-6.flex
+      .p1.flex.flex-auto
+        .bg-white.flex-auto.p1.border-mid
+          .h2 Associatied Mailing List
+          %ul
+            - contact.mailing_lists.each do |list|
+              %li= link_to list.title, list

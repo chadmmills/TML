@@ -1,15 +1,4 @@
-= link_to "New Event", new_event_path
-= link_to "Contacts", contacts_path
-
-%h2 Upcoming Events
-
-= render(events) || "No upcoming events"
-
-%h2 Previous Events
-
-= render(previous_events) || "No previous events"
-
-%h2 Floating Events
-
-= render floating_events
-
+.events.flex.flex-wrap
+  = render "event_group", title: "Upcoming Events", events: events, no_events_msg: "No upcoming events"
+  = render "event_group", title: "Previous Events", events: previous_events, no_events_msg: "No previous events"
+  = render "event_group", title: "Floating Events", events: floating_events, no_events_msg: ""

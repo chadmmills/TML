@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "Creating an invitation list" do
-  scenario "User can create an invitation list on an event" do
+feature "Creating an mailing list" do
+  scenario "User can create an mailing list on an event" do
     create :event, event_title: "John Doe Bday"
 
     visit root_path

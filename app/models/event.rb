@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   scope :in_the_past, -> { where("event_date < :date", date: Date.today) }
   scope :floating, -> { where(event_date: nil) }
 
-  has_many :invitation_lists
+  has_many :mailing_lists
 end

@@ -1,0 +1,13 @@
+.t-row {
+  border-bottom: 1px solid $light;
+  height: 55px;
+  .t-row-highlight {
+    height: 100%;
+    width: 0.4rem;
+  }
+  &:hover {
+    .t-row-highlight {
+      background-color: $mid;
+    }
+  }
+}

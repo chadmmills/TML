@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :invitationlist do
+  factory :mailinglist do
     title "MyString"
     event nil
   end

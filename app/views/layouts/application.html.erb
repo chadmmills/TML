@@ -4,26 +4,45 @@
     <title>TML2</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpSGgeIAvFnUCaElu5qfPIKrIYjnZN6J4"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRGP2uU9fJu0mzwBBJQm--HCIbnCUOpBc" async defer></script>
   </head>
 
   <body>
-    <%= link_to root_path, class: "absolute top-0 right-0 p1 home__icon" do %>
-      <i class="fa fa-home" aria-hidden="true"></i>
-    <% end %>
-    <div class="modal-overlay flex items-center justify-center" data-behavior="">
+    <section class="app flex">
+      <nav class="sidebar bg-dark flex flex-column items-center">
+        <%= link_to root_path, class: "p1 block home__icon" do %>
+          <i class="fa fa-home" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "New Event", new_event_path, class: "sidebar-link block p1 c-light"%>
+        <%= link_to "Contacts", contacts_path, class: "sidebar-link block p1 c-light" %>
+      </nav>
+      <section class="main p1 bg-light flex-auto">
+        <%= yield %>
+      </section>
+    </section>
+    <div id="contact-modal-container" v-bind:class="{show: showModal}" class="modal-overlay flex items-center justify-center">
       <div class="modal mx-auto" data-behavior='modal'>
-        <div class="modal__close flex items-center justify-center" data-behavior="modal-close">
+        <div class="modal__close flex items-center justify-center" @click=" showModal = false " data-behavior="modal-close">
           <span>&times</span>
         </div>
-        <div class="modal__body"></div>
+        <div id="contact-card__map" class="contact-card__header">
+        </div>
+        <div class="contact-card__body center mb2">
+          <div class="contact-card__user-icon c-light">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+          </div>
+          <div v-show="isLoading" class="modal__spinner--overlay flex items-center justify-center">
+            <%= image_tag('loader.gif', class: 'modal__spinner ma' ) %>
+          </div>
+          <h1 class="contact__name bold fs-3">{{ contact.name }}</h1>
+          <h1 class="fs-2-5">{{contact.street_1}}</h1>
+          <h2>{{contact.street_2}}</h2>
+          <h1 class="fs-2-5">{{contact.city}}, {{contact.state}} {{contact.zipcode}}</h1>
+        </div>
       </div>
     </div>
-
-    <%= yield %>
-
   </body>
 </html>

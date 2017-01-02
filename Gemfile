@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'haml'
 gem 'awesome_print', '~> 1.7'
+gem 'sprockets', '~>3.7.0'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -10,7 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require axios.js
+//= require vue.js
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function getCSRFToken() {
+  return document.querySelector("meta[name='csrf-token']").content
+}
+
+function initMap() {
+  var mapLoaded = new CustomEvent("map-loaded", {});
+  document.dispatchEvent(mapLoaded);
+}
+
+document.addEventListener("turbolinks:load", function() {
+  window.TMLAxios = window.TMLAxios || axios.create({ headers: { 'X-CSRF-Token': getCSRFToken() }})
+});

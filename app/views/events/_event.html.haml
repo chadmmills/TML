@@ -1,4 +1,4 @@
 %div[event]{ class: "table" }
   .event-date.table-cell= event.event_date_formatted
   .event-title.table-cell
-    = link_to event.event_title, event, remote: true, data: { show_modal: "yes", behavior: "show-event" }
+    = link_to event.event_title, event

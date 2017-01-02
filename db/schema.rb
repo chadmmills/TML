@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826021800) do
+ActiveRecord::Schema.define(version: 20161223194654) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",                    null: false
@@ -33,12 +33,23 @@ ActiveRecord::Schema.define(version: 20160826021800) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "invitation_lists", force: :cascade do |t|
+  create_table "mailing_list_contacts", force: :cascade do |t|
+    t.integer  "mailing_list_id",                 null: false
+    t.integer  "contact_id",                      null: false
+    t.boolean  "is_complete",     default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["contact_id"], name: "index_mailing_list_contacts_on_contact_id"
+    t.index ["mailing_list_id", "contact_id"], name: "index_mailing_list_contacts_on_mailing_list_id_and_contact_id", unique: true
+    t.index ["mailing_list_id"], name: "index_mailing_list_contacts_on_mailing_list_id"
+  end
+
+  create_table "mailing_lists", force: :cascade do |t|
     t.string   "title",      null: false
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_invitation_lists_on_event_id"
+    t.index ["event_id"], name: "index_mailing_lists_on_event_id"
   end
 
   create_table "uploads", force: :cascade do |t|
