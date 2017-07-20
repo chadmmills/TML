@@ -27,5 +27,9 @@ function initMap() {
 }
 
 document.addEventListener("turbolinks:load", function() {
+  console.log("turbolinks loaded");
+});
+
+document.addEventListener("turbolinks:load", function() {
   window.TMLAxios = window.TMLAxios || axios.create({ headers: { 'X-CSRF-Token': getCSRFToken() }})
 });

@@ -1,6 +1,6 @@
 $(document).on "turbolinks:load", ->
   if document.getElementById("contact-map")
-    new ContactMap(document.getElementById("contact-map")).show();
+    new ContactMap(document.getElementById("contact-map")).show()
 
 class @ContactMap
   constructor: (@map, @address) ->
@@ -12,6 +12,8 @@ class @ContactMap
 
   findGeocodedAddress: () ->
     @geocoder.geocode "address": @_address(), (results, status) =>
+      console.log results[0].geometry.location.lat()
+      console.log results[0].geometry.location.lng()
       if status is "OK"
         @buildMap().setCenter results[0].geometry.location
 
