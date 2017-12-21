@@ -7,7 +7,13 @@ class MailingListsController < ApplicationController
   end
 
   def show
-    render locals: { mailing_list: MailingListPresenter.new(mailing_list) }
+    respond_to do |format|
+      format.html { render locals: { mailing_list: MailingListPresenter.new(mailing_list) } }
+      format.csv do
+        exporter = MailingListExport.new(mailing_list)
+        send_data exporter.data, filename: exporter.filename
+      end
+    end
   end
 
   def create

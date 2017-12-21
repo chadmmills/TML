@@ -2,6 +2,9 @@
   .flex.items-center.mt-4.mb-6
     .font-bold.mr-2.text-4xl= mailing_list.title
     = link_to mailing_list.event_title, mailing_list.event
+    = link_to mailing_list_path(mailing_list.id, format: :csv), class: "no-underline text-grey border py-1 px-2 ml-auto rounded hover:text-white hover:bg-grey", format: :csv do
+      Export
+      %i{ class: "fa fa-download" }
 
   %div{ class: "mailing_list__contacts", data: { turbolinks: "false" } }
     #mailing_list__contacts-list
