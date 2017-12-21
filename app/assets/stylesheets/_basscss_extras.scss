@@ -45,6 +45,10 @@ th,
 td {
   padding: .5rem 1rem;
   line-height: inherit;
+
+  @media (max-width: 500px) {
+    padding: .25rem;
+  }
 }
 
 th { vertical-align: bottom; font-weight: 500; }
@@ -59,3 +63,6 @@ td { vertical-align: top }
   }
 }
 
+@media (max-width: 40em) {
+  .sm-flex-column { flex-direction: column; }
+}

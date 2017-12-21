@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -14,6 +14,7 @@ gem 'haml'
 gem 'awesome_print', '~> 1.7'
 gem 'sprockets', '~>3.7.0'
 gem 'jbuilder'
+gem 'webpacker', '~> 3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

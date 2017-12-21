@@ -1,4 +1,4 @@
-%div[event]{ class: "table" }
-  .event-date.table-cell= event.event_date_formatted
-  .event-title.table-cell
+%div[event]{ class: "flex" }
+  .pr-1= event.event_date_formatted
+  .event-title
     = link_to event.event_title, event

@@ -1,11 +1,11 @@
 <li v-for="contact in filteredContacts">
   <div class="flex items-center bg-white t-row">
-    <div class="t-row-highlight mr1"></div>
+    <div class="t-row-highlight mr-1"></div>
     <div class="mailing-list__contact-name flex-auto">
       <a v-bind:href="'/contacts/' + contact.id">{{contact.name}}</a>
       <span class="h6">{{contact.city}}, {{contact.state}}</span>
     </div>
-    <div class="mr2 cursor">
+    <div class="mr-2 cursor">
       <i @click="showContactModalWith(contact)" class="fa fa-address-card-o fs-1-3 c-mid" aria-hidden="true"></i>
     </div>
     <div class="mailing-list__contact-included width-8">

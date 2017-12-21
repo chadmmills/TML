@@ -1,9 +1,11 @@
 .h1.center Contacts
 = link_to "New Contact", new_contact_path
 
-.flex
+.flex.flex-col.lg:flex-row
   .existing-contacts.flex-auto
     .h3.mb2 Existing Contacts
+    .h6
+      = "Total: #{contacts.size}"
     = render "contact_table_template", contacts: contacts
   .new-contacts.pl2
     .new-contacts__form

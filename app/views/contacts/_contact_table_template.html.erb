@@ -6,10 +6,9 @@
 <script id="contacts-table-template" type="text/x-template">
   <table class="table-light">
     <thead>
-      <tr><th>Name</th>
+      <tr>
+        <th>Name</th>
         <th>Address</th>
-        <th>City, State</th>
-        <th>Zip</th>
       </tr>
     </thead>
     <tbody>
@@ -24,8 +23,6 @@
       <a v-bind:href="contactUrl">{{ contact.name }}</a>
     </td>
     <td>{{contact.address}}</td>
-    <td>{{contact.city}}, {{contact.state}}</td>
-    <td>{{contact.zipcode}}</td>
   </tr>
 </script>
 

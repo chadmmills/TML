@@ -4,22 +4,30 @@
     <title>TML2</title>
     <%= csrf_meta_tags %>
 
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <meta name = "viewport" content = "user-scalable=no, width=device-width">
     <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= stylesheet_pack_tag 'tailwind' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpSGgeIAvFnUCaElu5qfPIKrIYjnZN6J4"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <section class="app flex">
-      <nav class="sidebar bg-dark flex flex-column items-center">
-        <%= link_to root_path, class: "p1 block home__icon" do %>
-          <i class="fa fa-home" aria-hidden="true"></i>
+    <section class="md:flex">
+      <nav class="bg-dark flex md:flex-col items-center p-2">
+        <%= link_to root_path, class: "p1 flex sm:mr-auto md:flex-initial md:h-12 md:w-full home__icon no-underline" do %>
+          <i class="fa fa-home m-auto" aria-hidden="true"></i>
         <% end %>
-        <%= link_to "New Event", new_event_path, class: "sidebar-link block p1 c-light"%>
-        <%= link_to "Contacts", contacts_path, class: "sidebar-link block p1 c-light" %>
+        <%= link_to new_event_path, class: "p-1 c-light flex md:h-12 md:w-full no-underline" do %>
+          <span class="m-auto">New Event</span>
+        <% end %>
+        <%= link_to contacts_path, class: "p-1 c-light flex md:h-12 md:w-full no-underline" do %>
+          <span class="m-auto">Contacts</span>
+        <% end %>
       </nav>
-      <section class="main p1 bg-light flex-auto">
+      <section class="min-h-screen p-2 bg-light flex-auto">
         <%= yield %>
       </section>
     </section>
@@ -30,7 +38,7 @@
         </div>
         <div id="contact-card__map" class="contact-card__header">
         </div>
-        <div class="contact-card__body center mb2">
+        <div class="contact-card__body text-center mb-2">
           <div class="contact-card__user-icon c-light">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
           </div>

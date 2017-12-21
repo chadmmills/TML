@@ -1,3 +1,7 @@
+searchingContact = (contact) ->
+  return true unless this.search.length
+  return contact.name.toLowerCase().includes(this.search.toLowerCase())
+
 addedToMailingList = (contact) ->
   return true unless this.filterByAdded?
   return true if this.filterByAdded and contact.assignment_id
@@ -9,10 +13,11 @@ MailingContact =
   data:
     filterByAdded: null
     contacts: []
+    search: ""
   computed:
     filteredContacts: () ->
       self = @
-      @contacts.filter(addedToMailingList, self)
+      @contacts.filter(searchingContact, self).filter(addedToMailingList, self)
     assignedContacts: () ->
       @contacts.filter (contact) -> contact.assignment_id
     numberOfAssignedContacts: () ->
@@ -22,6 +27,7 @@ MailingContact =
       @filterByAdded = !@filterByAdded
     clearFilters: () ->
       @filterByAdded = null
+      @search = ""
     showContactModalWith: (contact) ->
       TMLContactModal.showContactWithId(contact.id)
     markActionComplete: (contact) ->
@@ -31,7 +37,7 @@ MailingContact =
     addToList: (contact) ->
       window.TMLAxios.post "/mailing-list-contacts.json",
         contact_id: contact.id,
-        mailing_list_id: 3,
+        mailing_list_id: contact.list_id,
       .then (response) -> contact.assignment_id = response.data.assignment_id
 
 
