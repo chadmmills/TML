@@ -56,3 +56,19 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+.btn-negative {
+  @apply .bg-white .border .border-red-dark .no-underline .text-red-dark .text-sm .py-1 .px-2 .rounded;
+}
+
+.btn-primary {
+  @apply .bg-blue .text-white .py-1 .px-2 .rounded .text-sm;
+}
+
+.field {
+  @apply .border .w-full .mb-2 .px-2 py-4;
+}
+
+.text-md {
+  font-size: .9375rem;
+}

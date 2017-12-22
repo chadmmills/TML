@@ -1,15 +1,13 @@
 %div[contact]
   %div{ id: "contact-map", class: "contact__map", data: { address: contact.full_address}  }
-  .text-center.text-4xl.my-2= contact.name
+  .font-bold.text-center.text-4xl.my-2= contact.name
 
   .lg:flex
     %div{ class: "flex w-full" }
       .p-2.flex.flex-auto
         .bg-white.flex-auto.p-2.border-mid
-          .h2 Edit Details
+          %h3.mb-2 Edit Details
           = render "form", contact: contact
-          .mt4
-            = button_to "Remove", contact, method: :delete
 
     %div{ class: "flex w-full" }
       .p-2.flex.flex-auto
