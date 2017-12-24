@@ -30,13 +30,13 @@
         {{ numberOfAssignedContacts }} contacts assigned to mailing list.
       .header.flex.p-2
         .flex-auto.bold Name
-        .width-8.bold
+        %div{ class: "w-12 sm:w-32 bold text-xs sm:text-base sm:text-left text-center" }
           .block.pb-1 Add to List?
-          %a{ class: "no-underline py-1 px-2 rounded-full border text-sm",
+          %a{ class: "block no-underline py-1 px-2 rounded-full border text-xs sm:text-sm sm:inline-block",
           href: "#toggle",
           "@click.prevent" => "toggleAddAll",
           }= "Toggle All"
-        .mailing-list__contact-action-complete.width-8.bold
+        %div{ class: "w-12 sm:w-32 bold text-xs sm:text-base sm:text-left text-center" }
           Action Complete?
 
       %ul.list-reset.my-0

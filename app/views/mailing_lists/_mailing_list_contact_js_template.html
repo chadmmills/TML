@@ -8,7 +8,7 @@
     <div class="mr-2 cursor">
       <i @click="showContactModalWith(contact)" class="fa fa-address-card-o fs-1-3 c-mid" aria-hidden="true"></i>
     </div>
-    <div class="mailing-list__contact-included flex-none width-3 sm:width-8">
+    <div class="mailing-list__contact-included flex-none w-12 sm:w-32">
       <input
         type="checkbox"
         class="m0"
@@ -17,7 +17,7 @@
         @click="addToList(contact)"
         />
     </div>
-    <div class="mailing-list__contact-complete flex-none width-3 sm:width-8">
+    <div class="mailing-list__contact-complete flex-none w-12 sm:w-32">
       <input type="checkbox"
         v-bind:checked="contact.is_complete"
         v-bind:disabled="!contact.assignment_id"
