@@ -73,23 +73,23 @@ class ContactUpload
     end
 
     def street_2
-      ""
-    end
-
-    def city
       attrs[2]
     end
 
-    def state
+    def city
       attrs[3]
     end
 
-    def zipcode
+    def state
       attrs[4]
     end
 
     def country
-      ""
+      attrs[5]
+    end
+
+    def zipcode
+      attrs[6]
     end
 
   end
