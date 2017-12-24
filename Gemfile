@@ -17,9 +17,9 @@ gem 'webpacker', '~> 3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'rspec-rails', '~> 3.5'
   gem 'sqlite3'
 end
 
