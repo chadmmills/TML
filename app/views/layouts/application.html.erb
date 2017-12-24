@@ -17,7 +17,7 @@
   <body>
     <section class="md:flex">
       <nav class="bg-dark flex flex-none md:flex-col items-center p-2 text-md">
-        <%= link_to root_path, class: "p1 flex sm:mr-auto md:flex-initial md:h-12 md:w-full home__icon no-underline" do %>
+        <%= link_to root_path, class: "p1 flex mr-auto md:flex-initial md:h-12 md:w-full home__icon no-underline" do %>
           <i class="fa fa-home m-auto" aria-hidden="true"></i>
         <% end %>
         <%= link_to new_event_path, class: "p-1 c-light flex md:h-12 md:w-full no-underline" do %>
@@ -32,7 +32,7 @@
       </section>
     </section>
     <div id="contact-modal-container" v-bind:class="{show: showModal}" class="modal-overlay flex items-center justify-center">
-      <div class="modal mx-auto" data-behavior='modal'>
+      <div class="modal m-4 sm:mx-auto" data-behavior='modal'>
         <div class="modal__close flex items-center justify-center" @click=" showModal = false " data-behavior="modal-close">
           <span>&times</span>
         </div>
@@ -46,9 +46,9 @@
             <%= image_tag('loader.gif', class: 'modal__spinner ma' ) %>
           </div>
           <h1 class="contact__name bold fs-3">{{ contact.name }}</h1>
-          <h1 class="fs-2-5">{{contact.street_1}}</h1>
+          <h1 class="text-lg sm:text-3xl">{{contact.street_1}}</h1>
           <h2>{{contact.street_2}}</h2>
-          <h1 class="fs-2-5">{{contact.city}}, {{contact.state}} {{contact.zipcode}}</h1>
+          <h1 class="text-lg sm:text-3xl">{{contact.city}}, {{contact.state}} {{contact.zipcode}}</h1>
         </div>
       </div>
     </div>

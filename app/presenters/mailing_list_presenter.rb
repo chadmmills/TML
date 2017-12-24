@@ -19,4 +19,8 @@ class MailingListPresenter
       select("is_complete, mailing_list_contacts.id as assignment_id").
       by_name
   end
+
+  def non_added
+    contacts.where(mailing_list_contacts: { id: nil })
+  end
 end

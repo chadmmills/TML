@@ -11,9 +11,11 @@ addedToMailingList = (contact) ->
 MailingContact =
   el: "#mailing_list__contacts-list"
   data:
-    filterByAdded: null
     contacts: []
+    filterByAdded: null
+    mailingListId: null
     search: ""
+    toggleState: "on"
   computed:
     filteredContacts: () ->
       self = @
@@ -39,10 +41,18 @@ MailingContact =
         contact_id: contact.id,
         mailing_list_id: contact.list_id,
       .then (response) -> contact.assignment_id = response.data.assignment_id
+    toggleAddAll: () ->
+      TMLAxios.patch "/mailing-list-contacts-toggle.json",
+        mailing_list_id: @mailingListId
+        state: @toggleState
+      .then ({ data }) =>
+        @contacts = data.contacts
+        @toggleState = if @toggleState is "on" then "off" else "on"
 
 
   mounted: ->
     this.contacts = window._contacts || []
+    this.mailingListId = window._mailing_list_id
 
 document.addEventListener "turbolinks:load", ->
   if document.getElementById("mailing_list__contacts-list")

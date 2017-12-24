@@ -12,9 +12,9 @@
 }
 .modal {
   position: relative;
-  width: 50%;
+  width: 100%;
   min-height: 200px;
-  min-width: 400px;
+  max-width: 600px;
   background-color: white;
   &__body {
     padding: 10px;

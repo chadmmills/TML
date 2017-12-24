@@ -1,12 +1,12 @@
 .max-w-lg.mx-auto
-  .flex.items-center.mt-4.mb-6
-    .font-bold.mr-2.text-4xl= mailing_list.title
+  %div{ class: "sm:flex items-center mt-4 mb-6" }
+    %div{ class: "font-bold mr-2 text-4xl pb-2 sm:p-0" }= mailing_list.title
     = link_to mailing_list.event_title, mailing_list.event
     = link_to mailing_list_path(mailing_list.id, format: :csv), class: "no-underline text-grey border py-1 px-2 ml-auto rounded hover:text-white hover:bg-grey", format: :csv do
       Export
       %i{ class: "fa fa-download" }
 
-  %div{ class: "mailing_list__contacts", data: { turbolinks: "false" } }
+  %div{ class: "mailing_list__contacts text-md sm:text-base", data: { turbolinks: "false" } }
     #mailing_list__contacts-list
       .flex.pt-2
         %input{ "class" => "p-2 w-full",
@@ -30,8 +30,12 @@
         {{ numberOfAssignedContacts }} contacts assigned to mailing list.
       .header.flex.p-2
         .flex-auto.bold Name
-        .mailing-list__contact-assignment.width-8.bold
-          Add to List?
+        .width-8.bold
+          .block.pb-1 Add to List?
+          %a{ class: "no-underline py-1 px-2 rounded-full border text-sm",
+          href: "#toggle",
+          "@click.prevent" => "toggleAddAll",
+          }= "Toggle All"
         .mailing-list__contact-action-complete.width-8.bold
           Action Complete?
 
@@ -41,3 +45,4 @@
 
 :javascript
   window._contacts = #{raw mailing_list.contacts.to_json};
+  window._mailing_list_id = #{raw mailing_list.id};
