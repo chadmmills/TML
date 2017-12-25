@@ -1,10 +1,10 @@
-.h1.center Contacts
-= link_to "New Contact", new_contact_path
+.flex.items-center
+  .font-bold.mr-2.pb-2.text-4xl Contacts
+  = link_to "+", new_contact_path, class: "border h-8 flex items-center justify-center no-underline rounded-full text-grey text-xl w-8"
 
 .flex.flex-col.lg:flex-row
   .existing-contacts.flex-auto
-    .h3.mb2 Existing Contacts
-    .h6
+    .text-md
       = "Total: #{contacts.size}"
     = render "contact_table_template", contacts: contacts
   .new-contacts.pl2

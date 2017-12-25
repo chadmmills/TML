@@ -16,7 +16,7 @@ class MailingListPresenter
     Contact.
       joins("LEFT JOIN mailing_list_contacts ON mailing_list_contacts.contact_id = contacts.id AND mailing_list_contacts.mailing_list_id = #{id}").
       select("contacts.id, name, city, state, #{id} as list_id").
-      select("is_complete, mailing_list_contacts.id as assignment_id").
+      select("mailing_list_contacts.is_blocked, is_complete, mailing_list_contacts.id as assignment_id").
       by_name
   end
 

@@ -3,6 +3,7 @@ class MailingListContact < ApplicationRecord
   belongs_to :contact
 
   # Attrs
+  # - is_blocked
   # - is_complete
 
   def self.not_complete_for_list(mailing_list)
