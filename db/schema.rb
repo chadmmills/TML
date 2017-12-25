@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20171225220110) do
 
-  create_table "contacts", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "contacts", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "street_1", null: false
     t.string "street_2", default: ""
@@ -26,14 +29,14 @@ ActiveRecord::Schema.define(version: 20171225220110) do
     t.index ["upload_id"], name: "index_contacts_on_upload_id"
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", id: :serial, force: :cascade do |t|
     t.string "event_title", null: false
     t.datetime "event_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "mailing_list_contacts", force: :cascade do |t|
+  create_table "mailing_list_contacts", id: :serial, force: :cascade do |t|
     t.integer "mailing_list_id", null: false
     t.integer "contact_id", null: false
     t.boolean "is_complete", default: false, null: false
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171225220110) do
     t.index ["mailing_list_id"], name: "index_mailing_list_contacts_on_mailing_list_id"
   end
 
-  create_table "mailing_lists", force: :cascade do |t|
+  create_table "mailing_lists", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.integer "event_id"
     t.datetime "created_at", null: false
@@ -53,9 +56,13 @@ ActiveRecord::Schema.define(version: 20171225220110) do
     t.index ["event_id"], name: "index_mailing_lists_on_event_id"
   end
 
-  create_table "uploads", force: :cascade do |t|
+  create_table "uploads", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contacts", "uploads"
+  add_foreign_key "mailing_list_contacts", "contacts", on_delete: :cascade
+  add_foreign_key "mailing_list_contacts", "mailing_lists", on_delete: :cascade
+  add_foreign_key "mailing_lists", "events"
 end

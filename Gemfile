@@ -7,6 +7,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'haml'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.1.0'
 gem 'sass-rails', '~> 5.0'
@@ -20,7 +21,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy', '~> 2.4', '>= 2.4.3'
   gem 'rspec-rails', '~> 3.5'
-  gem 'sqlite3'
 end
 
 group :test do
@@ -32,9 +32,5 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :production do
-  gem 'pg'
 end
 
