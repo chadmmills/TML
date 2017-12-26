@@ -18,11 +18,6 @@ class MailingListContact < ApplicationRecord
     persisted? ? destroy! : save!
   end
 
-  def toggleActionComplete!
-    update!(is_complete: !read_attribute(:is_complete))
-  end
-
-
   class On
     def initialize(list_id:, contact_ids:)
       @list_id = list_id

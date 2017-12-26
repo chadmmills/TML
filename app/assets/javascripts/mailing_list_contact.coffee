@@ -33,8 +33,16 @@ MailingContact =
     showContactModalWith: (contact) ->
       TMLContactModal.showContactWithId(contact.id)
     markActionComplete: (contact) ->
-      TMLAxios.patch "/mailing-list-contacts/#{contact.assignment_id}.json"
-      .then (response) -> contact.is_complete = !contact.is_complete
+      contact.is_complete = !contact.is_complete
+      TMLAxios.patch "/mailing-list-contacts/#{contact.assignment_id}.json",
+        contact
+      .then (response) -> contact.is_complete = contact.is_complete
+      .catch (error) -> console.error(error)
+    markAsBlocked: (contact) ->
+      contact.is_blocked = !contact.is_blocked
+      TMLAxios.patch "/mailing-list-contacts/#{contact.assignment_id}.json",
+        contact
+      .then (response) -> contact.is_blocked = response.data.is_blocked
       .catch (error) -> console.error(error)
     addToList: (contact) ->
       window.TMLAxios.post "/mailing-list-contacts.json",

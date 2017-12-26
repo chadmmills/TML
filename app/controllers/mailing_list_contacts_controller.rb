@@ -15,8 +15,13 @@ class MailingListContactsController < ApplicationController
 
   def update
     mailing_list_contact = MailingListContact.find(params[:id])
-    mailing_list_contact.toggleActionComplete!
-    head :ok
+    mailing_list_contact.update!(
+      params.require(:mailing_list_contact).permit(:is_complete, :is_blocked)
+    )
+
+    respond_to do |format|
+      format.json { render json: mailing_list_contact }
+    end
   end
 end
 

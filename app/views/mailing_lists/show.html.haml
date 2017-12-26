@@ -28,16 +28,20 @@
             }= raw("&times")
       .text-sm.pt-2
         {{ numberOfAssignedContacts }} contacts assigned to mailing list.
-      .header.flex.p-2
+      .header.flex.p-2.items-end
         .flex-auto.bold Name
-        %div{ class: "w-12 sm:w-32 bold text-xs sm:text-base sm:text-left text-center" }
-          .block.pb-1 Add to List?
+        %div{ class: "w-12 sm:w-24 bold text-xs sm:text-md sm:text-left text-center" }
+          .block.pb-1 Add to List
           %a{ class: "block no-underline py-1 px-2 rounded-full border text-xs sm:text-sm sm:inline-block",
           href: "#toggle",
           "@click.prevent" => "toggleAddAll",
           }= "Toggle All"
-        %div{ class: "w-12 sm:w-32 bold text-xs sm:text-base sm:text-left text-center" }
-          Action Complete?
+        %div{ class: "w-12 sm:w-24 bold text-xs sm:text-md sm:text-left text-center" }
+          .block Need
+          .block Address
+        %div{ class: "w-12 sm:w-24 bold text-xs sm:text-md sm:text-left text-center" }
+          .block Action
+          .block Complete
 
       %ul.list-reset.my-0
         = render "mailing_list_contact_js_template"

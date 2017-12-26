@@ -69,6 +69,8 @@
   @apply .border .w-full .mb-2 .px-2 py-4;
 }
 
-.text-md {
-  font-size: .9375rem;
+@responsive {
+  .text-md {
+    font-size: .9375rem;
+  }
 }
