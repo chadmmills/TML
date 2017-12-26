@@ -24,6 +24,10 @@ MailingContact =
       @contacts.filter (contact) -> contact.assignment_id
     numberOfAssignedContacts: () ->
       @assignedContacts.length
+    percentComplete: () ->
+      if @numberOfAssignedContacts
+        (@contacts.filter((c) -> c.is_complete).length / @numberOfAssignedContacts)
+          .toLocaleString("en", {style: "percent"})
   methods:
     toggleAddedFilter: () ->
       @filterByAdded = !@filterByAdded

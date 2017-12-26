@@ -42,6 +42,7 @@
         %div{ class: "w-12 sm:w-24 bold text-xs sm:text-md sm:text-left text-center" }
           .block Action
           .block Complete
+          .block.font-bold {{ percentComplete }}
 
       %ul.list-reset.my-0
         = render "mailing_list_contact_js_template"
