@@ -9,6 +9,9 @@ class MailingListsController < ApplicationController
   def show
     respond_to do |format|
       format.html { render locals: { mailing_list: MailingListPresenter.new(mailing_list) } }
+      format.json do
+        render json: { contacts: MailingListPresenter.new(mailing_list).contacts }
+      end
       format.csv do
         exporter = MailingListExport.new(mailing_list)
         send_data exporter.data, filename: exporter.filename

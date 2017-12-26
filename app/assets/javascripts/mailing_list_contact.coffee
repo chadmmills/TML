@@ -61,6 +61,10 @@ MailingContact =
   mounted: ->
     this.contacts = window._contacts || []
     this.mailingListId = window._mailing_list_id
+    setInterval () =>
+      TMLAxios.get "/mailing-lists/#{@mailingListId}.json"
+        .then ({ data }) => this.contacts = data.contacts
+    , 15000
 
 document.addEventListener "turbolinks:load", ->
   if document.getElementById("mailing_list__contacts-list")
