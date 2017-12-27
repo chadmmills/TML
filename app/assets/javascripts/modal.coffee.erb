@@ -1,3 +1,22 @@
+class CopyToClipboard
+  constructor: (text) ->
+    @text = text
+    @copy()
+
+  copy: () ->
+    textarea = document.createElement("textarea")
+    textarea.textContent = @text
+    textarea.style.position = "fixed"  # Prevent scrolling to bottom of page in MS Edge.
+    document.body.appendChild(textarea)
+    textarea.select()
+    try
+      document.execCommand("copy")  # Security exception may be thrown by some browsers.
+    catch
+      console.warn("Copy to clipboard failed.")
+      false
+    finally
+      document.body.removeChild(textarea);
+
 class Modal
   constructor: (el) ->
     @modal = el
@@ -31,6 +50,11 @@ contactModalObj =
     isLoading: false
     contact: {}
   methods:
+    copyAddress: ({ street_1, street_2, city, state, zipcode }) ->
+      text = "#{street_1}"
+      text += "\n#{street_2}" if street_2
+      text += "\n#{city}, #{state} #{zipcode}"
+      new CopyToClipboard(text)
     showContactWithId: (id) ->
       self = @
       self.showModal = true

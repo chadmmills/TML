@@ -49,6 +49,9 @@
           <h1 class="text-lg sm:text-3xl">{{contact.street_1}}</h1>
           <h2 v-if="contact.street_2">{{contact.street_2}}</h2>
           <h1 class="text-lg sm:text-3xl">{{contact.city}}, {{contact.state}} {{contact.zipcode}}</h1>
+          <div class="mt-2">
+            <button class="btn" @click="copyAddress(contact)">Copy Address</button>
+          </div>
         </div>
       </div>
     </div>
