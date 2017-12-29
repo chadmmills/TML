@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    render locals: { contact: contact }
+    render locals: { contact: ContactForm.new(contact, Contact.all.by_name.pluck(:id)) }
   end
 
   def new
@@ -53,5 +53,27 @@ class ContactsController < ApplicationController
       :state,
       :zipcode,
     )
+  end
+
+
+  class ContactForm < SimpleDelegator
+
+    attr_reader :contact_ids, :contact_index
+
+    def initialize(contact, contact_ids)
+      super(contact)
+      @contact_ids = contact_ids
+      @contact_index = contact_ids.find_index(contact.id)
+    end
+
+    def next
+      contact_ids[contact_index + 1]
+    end
+
+    def previous
+      unless contact_index == 0
+        contact_ids[contact_index - 1]
+      end
+    end
   end
 end

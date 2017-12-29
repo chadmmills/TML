@@ -1,6 +1,13 @@
 %div[contact]
   %div{ id: "contact-map", class: "contact__map", data: { address: contact.full_address}  }
-  .font-bold.text-center.text-4xl.my-2= contact.name
+  .flex.items-center.justify-center
+    - if contact.previous
+      = link_to contact_path(contact.previous) do
+        %i.fa.fa-arrow-circle-o-left.pr-2.text-xl
+    .font-bold.text-center.text-4xl.my-2= contact.name
+    - if contact.next
+      = link_to contact_path(contact.next) do
+        %i.fa.fa-arrow-circle-o-right.pl-2.text-xl
 
   .lg:flex
     %div{ class: "flex w-full" }
