@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    render locals: { contact: ContactForm.new(contact, Contact.all.by_name.pluck(:id)) }
+    render locals: { contact: contact }
   end
 
   def new
@@ -41,7 +41,7 @@ class ContactsController < ApplicationController
   private
 
   def contact
-    @_contact ||= Contact.find(params[:id])
+    @_contact ||= ContactForm.new(Contact.find(params[:id]), Contact.all.by_name.pluck(:id))
   end
 
   def contact_params
