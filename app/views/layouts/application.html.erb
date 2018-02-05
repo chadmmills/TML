@@ -10,6 +10,8 @@
     <%= stylesheet_pack_tag 'tailwind' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+    <script
+      src="<%= Rails.env.development? ? 'https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js' : 'https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js' %>"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpSGgeIAvFnUCaElu5qfPIKrIYjnZN6J4"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>

@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require axios.js
-//= require vue.js
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
