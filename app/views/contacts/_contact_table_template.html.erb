@@ -1,6 +1,9 @@
+<script>
+  window.__contacts__ = <%= raw contacts.to_json(methods: [:address]) %>;
+</script>
+
 <div id="contacts-vue-table">
-  <contact-table initial-contacts='<%= raw contacts.to_json(methods: [:address]) %>'>
-  </contact-table>
+  <contact-table></contact-table>
 </div>
 
 <script id="contacts-table-template" type="text/x-template">
@@ -12,7 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <contact-table-row v-for="(contact, index) in contacts" v-bind:contact="contact"></contact-table-row>
+      <contact-table-row v-for="(contact, index) in contacts" v-bind:contact="contact" :key="contact.id">
+      </contact-table-row>
     </tbody>
   </table>
 </script>
@@ -43,7 +47,7 @@
     data: function(){
       return {
         contactCount: 0,
-        contacts: JSON.parse(this.initialContacts),
+        contacts: window.__contacts__,
       }
     }
   });
