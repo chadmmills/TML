@@ -1,3 +1,4 @@
+
 .flex.items-center
   .font-bold.mr-2.pb-2.text-4xl Contacts
   = link_to "+", new_contact_path, class: "border h-8 flex items-center justify-center no-underline rounded-full text-grey text-xl w-8"
@@ -6,7 +7,8 @@
   .existing-contacts.flex-auto
     .text-md
       = "Total: #{contacts.size}"
-    = render "contact_table_template", contacts: contacts
+    #contacts-table
+    =# render "contact_table_template", contacts: contacts
   .new-contacts.pl2
     .new-contacts__form
       .h3.mb2 New Contacts

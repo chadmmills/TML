@@ -1,10 +1,15 @@
 class ContactsController < ApplicationController
   def index
-    render locals: {
-      contacts: Contact.all.order(:name),
-      last_upload: Upload.most_recent,
-      recent_uploads: Upload.by_most_recent,
-    }
+    respond_to do |f|
+      f.json { render json: Contact.all.order(:name).as_json(methods: [:address]) }
+      f.html do
+        render locals: {
+          contacts: Contact.all.order(:name),
+          last_upload: Upload.most_recent,
+          recent_uploads: Upload.by_most_recent,
+        }
+      end
+    end
   end
 
   def show

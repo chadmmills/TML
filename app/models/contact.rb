@@ -20,7 +20,13 @@ class Contact < ApplicationRecord
   end
 
   def full_address
-    "#{street_1} #{city} #{state} #{zipcode}"
+    address_string = ""
+    address_string += "#{street_1}" if street_1.present?
+    address_string += " #{street_2}" if street_2.present?
+    address_string += " #{city}" if city.present?
+    address_string += " #{state}" if state.present?
+    address_string += " #{zipcode}" if zipcode.present?
+    address_string
   end
   alias :address :full_address
 

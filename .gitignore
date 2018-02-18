@@ -22,4 +22,5 @@
 *.DS_STORE
 /public/packs
 /public/packs-test
+/elm-stuff
 /node_modules
