@@ -5,6 +5,7 @@ class Contact < ApplicationRecord
   belongs_to :upload, optional: true
   has_many :mailing_list_contacts
   has_many :mailing_lists, through: :mailing_list_contacts
+  has_many :versions, -> { order(:created_at) }, class_name: ContactVersion
 
   def self.new_from_csv_upload(csv_upload_contact)
     new(
