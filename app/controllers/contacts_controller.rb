@@ -31,7 +31,11 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if contact.update(contact_params)
+    contact.attributes = contact_params
+    is_new_version = contact.changed?
+
+    if contact.save
+      ContactVersioner.new(contact) if is_new_version
       render :show, locals: { contact: contact }, alert: "Updated"
     else
       render :show, locals: { contact: contact }

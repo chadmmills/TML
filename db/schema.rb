@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225220110) do
+ActiveRecord::Schema.define(version: 20181117133819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_versions", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.string "name", null: false
+    t.string "street_1", null: false
+    t.string "street_2", default: ""
+    t.string "city", null: false
+    t.string "state", default: ""
+    t.string "country", default: ""
+    t.string "zipcode", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_versions_on_contact_id"
+  end
 
   create_table "contacts", id: :serial, force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +75,7 @@ ActiveRecord::Schema.define(version: 20171225220110) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contact_versions", "contacts"
   add_foreign_key "contacts", "uploads"
   add_foreign_key "mailing_list_contacts", "contacts", on_delete: :cascade
   add_foreign_key "mailing_list_contacts", "mailing_lists", on_delete: :cascade

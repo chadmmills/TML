@@ -9,7 +9,7 @@
       = link_to contact_path(contact.next) do
         %i.fa.fa-arrow-circle-o-right.pl-2.text-xl
 
-  .lg:flex
+  .xl:flex
     %div{ class: "flex w-full" }
       .p-2.flex.flex-auto
         .bg-white.flex-auto.p-2.border-mid
@@ -23,3 +23,19 @@
           %ul
             - contact.mailing_lists.each do |list|
               %li.py-2= link_to list.title, list
+
+    %div{ class: "flex w-full" }
+      .p-2.flex.flex-auto
+        .bg-white.flex-auto.p-2.border-mid
+          .h2 Versions
+          - contact.versions.each do |version|
+            .pt-2.pb-1.text-sm
+              .block
+                .flex.items-center
+                  .w-1.h-1.bg-teal.rounded-full
+                  .pl-2.text-black= "Updated #{version.created_at.strftime("%b - %Y")}"
+                .pl-3
+                  .pt-1= version.street_1
+                  - if version.street_2
+                    .pt-1= version.street_2
+                  .pt-1= "#{version.city}, #{version.state} #{version.zipcode}"
